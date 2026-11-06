@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
 
 public class scoopController : MonoBehaviour{
@@ -86,7 +87,7 @@ public class scoopController : MonoBehaviour{
         }
     }
 
-    public void PickTub(string flavor, RectTransform tubRect){
+    public void PickTub(string flavor, Color flavorColor, RectTransform tubRect){
         if (step != "pick")
             return;
         if (flavor != correctFlavor){
@@ -95,6 +96,7 @@ public class scoopController : MonoBehaviour{
         }
 
         pickedTub = tubRect;
+        scoopBall.GetComponent<Image>().color = flavorColor; // scoop matches the tub's flavor
         slideTime = 0f;
         step = "aim";
         scoop.gameObject.SetActive(true);
